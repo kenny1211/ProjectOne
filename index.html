@@ -58,15 +58,19 @@
           <div class="card-header bg-light card-title">
             Search for products on Walmart.com
           </div>
-          <form>
+          <form  id="search-form">
             <div class="form">
               <div class="form-group">
                 <label for="search-input">Description</label>
-                <input class="form-control" id="walmart-search" placeholder="Search for Products" type="text">
+                <input class="form-control" id="search-term" placeholder="Search for Products" type="text">
               </div>
             </div>
             <button class="btn btn-primary float-right" id="search">Submit</button>
           </form>
+          <div id="product-results">
+
+          </div>
+          <div id="query-view"></div>
         </div>
       </div>
     
@@ -104,7 +108,7 @@
           chart
         </div>
         <div class="card-body">
-          <div id="piechart_3d" style="width: 300px; height: 200px;">
+          <div id="chart-div" style="width: 500px; height: 500px;">
           </div>
         </div>
       </div>
