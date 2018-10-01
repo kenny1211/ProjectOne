@@ -66,25 +66,26 @@
           .addClass("table-button")
           .text("Add to Table")
           .appendTo(productBody);
+
         //click function
         $(".table-button").on("click", function (event) {
           event.preventDefault();
-//added for loop not it prints entire array
-              for (var i = 0; i < productsArray.items.length; i++) {
-
+          $("#product-results").empty();
+          
+        
           var price = productsArray.items[i].salePrice
           var product = productsArray.items[i].name
 
           console.log(product)
         
           var newRow = $("<tr>").append(
-            $("<td>").html(productsArray.items[i].salePrice),
-            $("<td>").html(productsArray.items[i].name),
-            $("<td>").html("null"),
+            $("<td>").text(price),
+            $("<td>").text(product),
+            $("<td>").text("null"),
           );
-          }
+          
           // Append the new row to the table
-          $("#data-table").append(newRow);
+          $("#walmart-table").append(newRow);
               
         });
 
@@ -201,8 +202,9 @@
       date: newDate,
     };
 
-    // Uploads employee data to the database
-    database.ref().push(newBudget);
+    // Uploads employee data to the databas
+    
+    database.ref("budget").push(newBudget);
 
     // Logs everything to console
     console.log(newBudget.name);
@@ -219,7 +221,7 @@
   });
 
   // 3. Create Firebase event for adding expense to the database and a row in the html when a user adds an entry
-  database.ref().on("child_added", function (childSnapshot) {
+  database.ref("budget").on("child_added", function (childSnapshot) {
     console.log(childSnapshot.val());
 
     // Store everything into a variable.
