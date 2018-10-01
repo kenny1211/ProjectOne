@@ -87,52 +87,23 @@
       });
     });
 
-        /* google.charts.load("current", {packages:["corechart"]});
-         google.charts.setOnLoadCallback(drawChart);
-         function drawChart() {
-           var data = google.visualization.arrayToDataTable([
-             ['Task', 'Hours per Day'],
-             ['Work',     11],
-             ['Eat',      2],
-             ['Commute',  2],
-             ['Watch TV', 2],
-             ['Sleep',    7]
-           ]);
-
-           var options = {
-             title: 'My Budget',
-             is3D: true,
-           };
-
-           var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
-           chart.draw(data, options);
-         }*/
-
-        /*function initialize() {
-          var opts = {sendMethod: 'auto'};
-          // Replace the data source URL on next line with your data source URL.
-          var query = new google.visualization.Query('https://docs.google.com/spreadsheets/d/15Kbfior06IfOAUhNcoyMfb7kzdVU8dSMuBZlSYaDRIs/edit?usp=sharing', opts);
-  
-          // Optional request to return only column C and the sum of column B, grouped by C members.
-          query.setQuery('select A');
-  
-          // Send the query with a callback function.
-          query.send(handleQueryResponse);
-        }
-  
-        function handleQueryResponse(response) {
-          // Called when the query response is returned.
-  
-        }
-
-        function handleQueryResponse(response) {
-
-          if (response.isError()) {
-            alert('Error in query: ' + response.getMessage() + ' ' + response.getDetailedMessage());
-            return;
-          }
-  
-          var data = response.getDataTable();
-          var chart = new google.visualization.PieChart(document.getElementById('chart-div'));
-          chart.draw(data, {width: 400, height: 240, is3D: true});
-        }*/
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var chart = new Chart(ctx, {
+        // The type of chart we want to create
+        type: 'line',
+    
+        // The data for our dataset
+        data: {
+            labels: ["January", "February", "March", "April", "May", "June", "July"],
+            datasets: [{
+                label: "My First dataset",
+                backgroundColor: 'rgb(255, 99, 132)',
+                borderColor: 'rgb(255, 99, 132)',
+                data: [0, 10, 5, 2, 20, 30, 45],
+            }]
+        },
+    
+        // Configuration options go here
+        options: {}
+    });
+    
