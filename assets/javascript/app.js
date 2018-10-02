@@ -155,62 +155,8 @@
 
 
 
-  /* google.charts.load("current", {packages:["corechart"]});
-   google.charts.setOnLoadCallback(drawChart);
-   function drawChart() {
-     var data = google.visualization.arrayToDataTable([
-       ['Task', 'Hours per Day'],
-       ['Work',     11],
-       ['Eat',      2],
-       ['Commute',  2],
-       ['Watch TV', 2],
-       ['Sleep',    7]
-     ]);
-
-     var options = {
-       title: 'My Budget',
-       is3D: true,
-     };
-
-     var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
-     chart.draw(data, options);
-   }*/
-
-  /*function initialize() {
-          var opts = {sendMethod: 'auto'};
-          // Replace the data source URL on next line with your data source URL.
-          var query = new google.visualization.Query('https://docs.google.com/spreadsheets/d/15Kbfior06IfOAUhNcoyMfb7kzdVU8dSMuBZlSYaDRIs/edit?usp=sharing', opts);
-  
-          // Optional request to return only column C and the sum of column B, grouped by C members.
-          query.setQuery('select A');
-  
-          // Send the query with a callback function.
-          query.send(handleQueryResponse);
-        }
-  
-        function handleQueryResponse(response) {
-          // Called when the query response is returned.
-  
-        }
-
-        function handleQueryResponse(response) {
-
-          if (response.isError()) {
-            alert('Error in query: ' + response.getMessage() + ' ' + response.getDetailedMessage());
-            return;
-          }
-  
-          var data = response.getDataTable();
-          var chart = new google.visualization.PieChart(document.getElementById('chart-div'));
-          chart.draw(data, {width: 400, height: 240, is3D: true});
-        }*/
-  // Initialize Firebase
-
-
-
-  
-
-  // 2. Button for adding Employees
+ 
+  // button to add new item to budget
   $("#submit").on("click", function (event) {
     event.preventDefault();
 
@@ -218,7 +164,7 @@
     var newName = $("#name").val().trim();
     var newAmount = $("#amount").val().trim();
     var newDate = $("#date").val().trim();
-    // Creates local "temporary" object for holding employee data
+    // Creates local "temporary" object for holding budget item
     var newBudget = {
 
       name: newName,
@@ -226,7 +172,7 @@
       date: newDate,
     };
 
-    // Uploads employee data to the databas
+    // Uploads data to the databas
     
     database.ref("budget").push(newBudget);
 
@@ -244,7 +190,7 @@
 
   });
 
-  // 3. Create Firebase event for adding expense to the database and a row in the html when a user adds an entry
+  // Create Firebase event for adding expense to the database and a row in the html when a user adds an entry
   database.ref("budget").on("child_added", function (childSnapshot) {
     console.log(childSnapshot.val());
 
@@ -253,7 +199,7 @@
     var newAmount = childSnapshot.val().amount;
     var newDate = childSnapshot.val().date;
 
-    // Employee Info
+    // Make sure we are getting the info
     console.log(newName);
     console.log(newAmount);
     console.log(newDate);
@@ -269,7 +215,7 @@
     $("#data-table").append(newRow);
   });
 
-// creat today's date n mm/dd/yyyy
+// create today's date n mm/dd/yyyy
 var today = new Date();
 var dd = today.getDate();
 var mm = today.getMonth()+1; //January is 0!
@@ -285,59 +231,3 @@ if(mm<10) {
 
 today = mm + '/' + dd + '/' + yyyy;
 
-
- /* google.charts.load("current", {
-    packages: ["corechart"]
-  });
-  google.charts.setOnLoadCallback(drawChart);
-
-  function drawChart() {
-    var data = google.visualization.arrayToDataTable([
-      ['Task', 'Hours per Day'],
-      ['Work', 11],
-      ['Eat', 2],
-      ['Commute', 2],
-      ['Watch TV', 2],
-      ['Sleep', 7]
-    ]);
-
-    var options = {
-      title: 'My Daily Activities',
-      is3D: true,
-    };
-
-    var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
-    chart.draw(data, options);
-  }
-
-
-  var ctx = document.getElementById("myChart");
-  var data = {
-    labels: ["January", "February", "March", "April", "May", "June", "July"],
-    datasets: [{
-      label: "My First dataset",
-      fill: false,
-      lineTension: 0.1,
-      backgroundColor: "rgba(75,192,192,0.4)",
-      borderColor: "rgba(75,192,192,1)",
-      borderCapStyle: 'butt',
-      borderDash: [],
-      borderDashOffset: 0.0,
-      borderJoinStyle: 'miter',
-      pointBorderColor: "rgba(75,192,192,1)",
-      pointBackgroundColor: "#fff",
-      pointBorderWidth: 1,
-      pointHoverRadius: 5,
-      pointHoverBackgroundColor: "rgba(75,192,192,1)",
-      pointHoverBorderColor: "rgba(220,220,220,1)",
-      pointHoverBorderWidth: 2,
-      pointRadius: 1,
-      pointHitRadius: 10,
-      data: [65, 59, 80, 81, 56, 55, 40],
-      spanGaps: false,
-    }]
-  };
-  var myBarChart = new Chart(ctx, {
-    type: 'bar',
-    data: data
-  });*/
