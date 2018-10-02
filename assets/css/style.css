@@ -15,3 +15,28 @@ form {
 .card-title {
   font-weight: bold;
 }
+
+#stockIndicator {
+  text-align: center;
+  font-size: 32px;
+
+}
+
+#stockSymbol {
+  text-align: center;
+  font-size: 32px;
+
+
+}
+
+#stockAsk {
+  text-align: center;
+  font-size: 32px;
+
+
+}
+
+#product-results {
+  overflow: auto; 
+
+}
