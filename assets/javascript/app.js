@@ -68,7 +68,7 @@
           .text("Add to Table")
           .appendTo(productBody)
           .attr("data-name", productsArray.items[i].name)
-          .attr("data-price", productsArray.items[i].salePrice);
+          .attr("data-price", productsArray.items[i].salePrice)
 
        
         // puts everything in product div
@@ -119,11 +119,13 @@
   var product = $(this).attr("data-name");
   var price = $(this).attr("data-price");
   var date = today;
+  var type = "expense";
   
   var purchase = {
     product: product,
     price: price,
-    date: date
+    date: date,
+    type: type
   };
 
   database.ref("shoppingList").push(purchase);      
@@ -159,7 +161,14 @@
   // button to add new item to budget
   $("#submit").on("click", function (event) {
     event.preventDefault();
-
+  
+    if(!$("input:radio[name=type]").is(":checked")){
+      return false;
+    } else {
+      var newType = $("input:radio[name=type]:checked").val(); 
+    };
+      
+    
     // Grabs user input
     var newName = $("#name").val().trim();
     var newAmount = $("#amount").val().trim();
@@ -170,6 +179,7 @@
       name: newName,
       amount: newAmount,
       date: newDate,
+      type: newType
     };
 
     // Uploads data to the databas
@@ -230,4 +240,66 @@ if(mm<10) {
 } 
 
 today = mm + '/' + dd + '/' + yyyy;
+
+// CHART ***************************************************
+var myChart = new Chart(document.getElementById("budgetByMonth"), {
+  type: 'bar',
+  data:{
+    labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "Decembner"],
+
+    datasets: [{label: "Total Income",
+    fillColor: "rgba(67, 214, 92, 0.5)", 
+    strokeColor: "rgba(67, 214, 92, 1)",
+    pointColor: "rgba(67, 214, 92,1)",
+    pointStrokeColor: "#fff",
+    pointHighlightFill: "#fff",
+    pointHighlightStroke: "rgba(67, 214, 92,1)",
+    data: []
+},
+{
+    label: "Total Expense",
+    fillColor: "rgba(218, 233, 39, 0.5)", 
+    strokeColor: "rgba(218, 233, 39, 1)",
+    pointColor: "rgba(218, 233, 39,1)",
+    pointStrokeColor: "#fff",
+    pointHighlightFill: "#fff",
+    pointHighlightStroke: "rgba(218, 233, 39,1)",
+    data: []
+    }]
+  },
+});
+
+database.ref("budget").on("value", function(snapshot){
+console.log(snapshot.val());
+var income = [];
+var expense = [];
+var data = snapshot.val();
+
+// one way to iterate through objects/
+// console.log(typeof data);
+
+// for (record in data) {
+//   console.log(record)
+//   console.log(typeof record)
+// } 
+
+// another way to iterate through objects
+
+Object.entries(data).forEach(function(record){
+  // console.log(record[1])
+  // console.log(typeof record)
+
+  // step one: while iterating through object push respective types of income/expense into arrays
+  if (record[1].type === "income") {
+    income.push(record[1]);
+  } else if (record[1].type === "expense"){
+    expense.push(record[1]);
+  };
+  // step two: iterate through income and expense arrays in order to separate them into respective months and total them in correct index to match labels of graph
+  
+});
+
+console.log(income);
+console.log(expense);
+});
 
