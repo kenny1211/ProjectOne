@@ -26,7 +26,7 @@
     </div>
 
     <div class="row">
-      <div class="col-md-12">
+      <div class="col-md-6 col-12">
         <div id="stockSymbol">
 
         </div>
@@ -38,94 +38,104 @@
 
 
       </div>
-    </div>
-  
-  <div class="row">
-    <div class="col-md-6 col-12">
-      <div class="card form-card">
-        <div class="card-header bg-light card-title">
-          Input your income or expenses
+      <div class="col-md-6 col-12">
+        <div id="coincap">
+
         </div>
-        <form>
-          <div class="form">
-            <div class="form-group">
-              <label for="description-input">Description</label>
-              <input class="form-control" id="name" placeholder="Description" type="text">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 col-12">
+        <div class="card form-card">
+          <div class="card-header bg-light card-title">
+            Input your income or expenses
+          </div>
+          <form>
+            <div class="form">
+              <div class="form-group">
+                <label for="description-input">Description</label>
+                <input class="form-control" id="name" placeholder="Description" type="text">
+              </div>
+              <div class="form-group">
+                <label for="role-input">Amount (use negative for expenses)</label>
+                <input class="form-control" id="amount" placeholder="$500" type="text">
+              </div>
+              <div class="form-group">
+                <label for="date">Date (MM/DD/YYYY)</label>
+                <input class="form-control" id="date" placeholder="01/08/1989" type="text">
+              </div>
             </div>
-            <div class="form-group">
-              <label for="role-input">Amount (use negative for expenses)</label>
-              <input class="form-control" id="amount" placeholder="$500" type="text">
+            <button class="btn btn-primary float-right" id="submit">Submit</button>
+          </form>
+        </div>
+      </div>
+      <div class="col-md-6 col-12">
+          <div class="card">
+            <div class="card-header bg-light card-title">
+              table
             </div>
-            <div class="form-group">
-              <label for="date">Date (MM/DD/YYYY)</label>
-              <input class="form-control" id="date" placeholder="01/08/1989" type="text">
+            <div class="card-body">
+              <table class="table table-sm table-hover" id='data-table'>
+                <thead>
+                  <tr>
+                    <td scope="col">Description</td>
+                    <td scope="col">Amount in $</td>
+                    <td scope="col">Date</td>
+                  </tr>  
+                </thead>
+                <tbody>
+                </tbody>
+              </table>
+            </div>
+            <div id="query-view">
             </div>
           </div>
-          <button class="btn btn-primary float-right" id="submit">Submit</button>
-        </form>
-      </div>
-    </div>
-    <div class="col-md-6 col-12">
-      <div class="card form-card">
-        <div class="card-header bg-light card-title">
-          Search for products on Walmart.com
         </div>
-        <form id="search-form">
-          <div class="form">
-            <div class="form-group">
-              <label for="search-input">Description</label>
-              <input class="form-control" id="search-term" placeholder="Search for Products" type="text">
+
+
+
+
+
+    </div>
+
+
+    <div class="row">
+      <div class="col-md-6 col-12">
+          <div class="card form-card">
+            <div class="card-header bg-light card-title">
+              
+              Search for products on Walmart.com
+            </div>
+            <form id="search-form">
+              <div class="form">
+                <div class="form-group">
+                  <label for="search-input">Description</label>
+                  <input class="form-control" id="search-term" placeholder="Search for Products" type="text">
+                </div>
+              </div>
+              <button class="btn btn-primary float-right" id="search">Submit</button>
+            </form>
+            <div id="product-results">
+    
+            </div>
+            <div id="query-view"></div>
+          </div>
+        </div>
+        <div class="col-md-6 col-12">
+            <div class="card">
+              <div class="card-header bg-light card-title">
+                chart
+              </div>
+              <div class="card-body">
+                <div id="chart-div" style="width: 500px; height: 500px;">
+                </div>
+              </div>
             </div>
           </div>
-          <button class="btn btn-primary float-right" id="search">Submit</button>
-        </form>
-        <div id="product-results">
 
-        </div>
-        <div id="query-view"></div>
-      </div>
     </div>
-
-
-
-  </div>
-
-
-  <div class="row">
-    <div class="col-md-6 col-12">
-      <div class="card">
-        <div class="card-header bg-light card-title">
-          table
-        </div>
-        <div class="card-body">
-          <table class="table table-sm table-hover" id='data-table'>
-            <thead>
-              <tr>
-                <td scope="col">Description</td>
-                <td scope="col">Amount in $</td>
-                <td scope="col">Date</td>
-              </tr>  
-            </thead>
-            <tbody>
-            </tbody>
-          </table>
-        </div>
-        <div id="query-view">
-        </div>
-      </div>
-    </div>
-    <div class="col-md-6 col-12">
-      <div class="card">
-        <div class="card-header bg-light card-title">
-          chart
-        </div>
-        <div class="card-body">
-          <div id="chart-div" style="width: 500px; height: 500px;">
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+    
 
   </div>
 
