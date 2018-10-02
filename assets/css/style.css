@@ -40,3 +40,37 @@ form {
   overflow: auto; 
 
 }
+
+#coincap {
+  text-align: center;
+  font-size: 32px;
+  animation-name: coincap;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+  margin-bottom: 10px;
+}
+
+.stockData {
+  animation-name: stockData;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+  margin-bottom: 10px;
+
+}
+
+img {
+  width: 80%;
+  height: 80%;
+  align: center;
+}
+
+@keyframes stockData {
+  from {left: 500px;}
+  to {left: 0px;}
+}
+
+
+@keyframes coincap {
+  from {right: 500px;}
+  to {right: 0px;}
+}

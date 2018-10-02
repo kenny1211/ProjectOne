@@ -25,7 +25,7 @@
         // print product name
         var productName = $("<div>");
         productName
-          .addClass("card-header bg-info text-light")
+          .addClass("card-header bg-success text-light")
           .text(productsArray.items[i].name) //product name 
           .appendTo(productDiv);
         // product info will have it's on div below name
@@ -88,8 +88,9 @@
               
         });
 
-        // puts everything in product div
+        // puts everything in product div 
         $("#product-results").append(productDiv);
+        //here
         $("#product-results").css({"height": "400px"});
       
       }
@@ -158,8 +159,7 @@
         var lastRefreshed = data['Meta Data']['3. Last Refreshed']
         var lastTradePriceOnly = data['Time Series (1min)'][lastRefreshed]['4. close']
         
-        $('#stockSymbol').html(symbol);
-        $('#stockAsk').html(lastTradePriceOnly);
+        $('#stockSymbol').html(symbol + " is currently worth $" + lastTradePriceOnly + " USD<br>");
         $("#stockIndicator").hide();
         
       }
@@ -190,7 +190,7 @@
   ); // initialise the request
   json.send(); //send request
   
- 
+ //HERE
 
   var database = firebase.database();
 
