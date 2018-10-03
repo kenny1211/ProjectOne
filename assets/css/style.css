@@ -58,9 +58,10 @@ form {
   margin-bottom: 10px;
 }
 img {
-  width: 80%;
+  width: 100%;
   height: 80%;
-  align: center;
+  padding: 20px;
+  
 }
 @keyframes stockData {
   from {left: 500px;}
