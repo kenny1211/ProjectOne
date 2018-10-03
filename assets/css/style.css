@@ -61,7 +61,7 @@ form {
 img {
   width: 80%;
   height: 80%;
-  align: center;
+  padding: 20px
 }
 
 @keyframes stockData {
@@ -73,4 +73,8 @@ img {
 @keyframes coincap {
   from {right: 500px;}
   to {right: 0px;}
+}
+
+#chart {
+  height: 350px;
 }
