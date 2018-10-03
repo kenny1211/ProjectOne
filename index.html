@@ -10,12 +10,12 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
   <link rel="stylesheet" href="assets/css/style.css">
   <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
-  <title>Working Title</title>
+  <title>current$ee</title>
 </head>
 
-<body class="bg-light">
+<body>
   <div class="jumbotron shadow p-3 mb-5 bg-success">
-    <h1 class="display-2 animate">Budget</h1>
+    <h1 class="display-2 animate">current$ee</h1>
   </div>
   <div class="container">
     <div class="row">
@@ -35,17 +35,16 @@
       </div>
       <div class="col-md-6 col-12">
         <div id="coincap">
-          
+
         </div>
-        <br>
-        <br>
       </div>
     </div>
     <div class="row">
       <div class="col-md-12 col-12">
         <div id="description">
           <p>
-          This budgeting app allows you to add in expenses and income and allow you to visualize your data over time. You can also add expenses via the Walmart.com Shopping List.
+            This budgeting app allows you to add in expenses and income and allow you to visualize your data over time.
+            You can also add expenses via the Walmart.com Shopping List
           </p>
         </div>
       </div>
@@ -83,26 +82,60 @@
           </form>
         </div>
       </div>
-      <div class="col-md-6 col-12">
-        <div class="card form-card">
-          <div class="card-header bg-light card-title">
-            Search for products on Walmart.com
-          </div>
-          <form id="search-form">
-            <div class="form">
-              <div class="form-group">
-                <label for="search-input">Description</label>
-                <input class="form-control" id="search-term" placeholder="Search for Products" type="text">
+      <div class="col-md-6 col-12" id="panel">
+          <!-- PANEL NAV WITH TABS -->
+          <ul class="nav nav-tabs">
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="tab" href="#menu1">Budget</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="tab" href="#menu2">Shopping List</a>
+            </li>
+          </ul>
+  
+          <!-- Tab panes -->
+          <div class="tab-content">
+            <div id="menu1" class="container tab-pane fade"><br>
+              <div class="card-body">
+                <table class="table table-sm table-hover" id='data-table'>
+                  <thead>
+                    <tr>
+                      <th scope="col">Description</th>
+                      <th scope="col">Amount in $</th>
+                      <th scope="col">Date</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  </tbody>
+                </table>
               </div>
             </div>
-            <button class="btn btn-primary float-right" id="search">Submit</button>
-          </form>
-          <div id="product-results">
-
+            <div id="menu2" class="container tab-pane fade"><br>
+              <div class="card-body">
+                <div id='walmart-table'>
+                </div>
+                <div class="card form-card">
+                    <div class="card-header bg-light card-title">
+                      Search for products on Walmart.com
+                    </div>
+                    <form id="search-form">
+                      <div class="form">
+                        <div class="form-group">
+                          <label for="search-input">Description</label>
+                          <input class="form-control" id="search-term" placeholder="Search for Products" type="text">
+                        </div>
+                      </div>
+                      <button class="btn btn-primary float-right" id="search">Submit</button>
+                    </form>
+                    <div id="product-results">
+          
+                    </div>
+                  </div>
+  
+  
+              </div>
+            </div>
           </div>
-          <div id="query-view"></div>
-        </div>
-      </div>
 
 
 
@@ -110,60 +143,17 @@
 
 
     <div class="row">
-      <div class="col-md-6 col-12">
-        <!-- PANEL NAV WITH TABS -->
-        <ul class="nav nav-tabs">
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#menu1">Budget</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#menu2">Shopping List</a>
-          </li>
-        </ul>
 
-        <!-- Tab panes -->
-        <div class="tab-content">
-          <div id="menu1" class="container tab-pane fade"><br>
-            <div class="card-body">
-              <table class="table table-sm table-hover" id='data-table'>
-                <thead>
-                  <tr>
-                    <th scope="col">Description</th>
-                    <th scope="col">Amount in $</th>
-                    <th scope="col">Date</th>
-                  </tr>
-                </thead>
-                <tbody>
-                </tbody>
-              </table>
-            </div>
-          </div>
-          <div id="menu2" class="container tab-pane fade"><br>
-            <div class="card-body">
-              <table class="table table-sm table-hover" id='walmart-table'>
-                <thead>
-                  <tr>
-                    <th scope="col">Description</th>
-                    <th scope="col">Amount in $</th>
-                    <th scope="col">Date</th>
-                  </tr>
-                </thead>
-                <tbody>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
         <!--END OF PANEL NAV -->
 
       </div>
-      <div class="col-md-6 col-12">
+      <div class="col-md-12 col-12">
         <div class="card" id="chart">
           <div class="card-header bg-light card-title">
             chart
           </div>
           <div class="card-body">
-            <div id="chart-div" style="width: 500px; height: 500px;">
+            <div id="chart-div" style="width: 1000px; height: 1000px;">
               <canvas id="budgetByMonth"></canvas>
             </div>
           </div>

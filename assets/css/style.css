@@ -76,5 +76,15 @@ img {
 }
 
 #chart {
-  height: 350px;
+  height: 600px;
+}
+
+#product-results {
+  overflow: auto; 
+
+}
+
+#panel {
+  overflow: auto; 
+  height: 380px;
 }
