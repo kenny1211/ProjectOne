@@ -15,3 +15,63 @@ form {
 .card-title {
   font-weight: bold;
 }
+h1 {
+  text-align: center;
+  color: white;
+}
+.form-card {
+  margin-bottom: 20px;
+}
+form {
+  padding: 20px;
+}
+.card-title {
+  font-weight: bold;
+}
+#stockIndicator {
+  text-align: center;
+  font-size: 32px;
+}
+#stockSymbol {
+  text-align: center;
+  font-size: 32px;
+}
+#stockAsk {
+  text-align: center;
+  font-size: 32px;
+}
+#product-results {
+  overflow: auto; 
+}
+#coincap {
+  text-align: center;
+  font-size: 32px;
+  animation-name: coincap;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+  margin-bottom: 10px;
+}
+.stockData {
+  animation-name: stockData;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+  margin-bottom: 10px;
+}
+img {
+  width: 100%;
+  height: 80%;
+  padding: 20px;
+  
+}
+@keyframes stockData {
+  from {left: 500px;}
+  to {left: 0px;}
+}
+@keyframes coincap {
+  from {right: 500px;}
+  to {right: 0px;}
+}
+/* PANEL NAV ****************************************8*/
+
+
+/* PANEL NAV **************************** */
