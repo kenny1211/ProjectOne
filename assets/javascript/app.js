@@ -204,6 +204,7 @@
     $("#name").val("");
     $("#amount").val("");
     $("#date").val("");
+    
 
   });
 
@@ -277,39 +278,99 @@
       ]
     },
   });
-  var data = []
-  var tempdata = 0;
+  var data = [{"date":"05/06/2018","type":"income","Amount":"500"},{"date":"05/06/2018","type":"expense","Amount":"500"},{"date":"05/06/2018","type":"income","Amount":"1200"},{"date":"05/06/2018","type":"expense","Amount":"800"},
+  {"date":"05/06/2018","type":"income","Amount":"500"},{"date":"07/06/2018","type":"expense","Amount":"500"},{"date":"08/06/2018","type":"income","Amount":"1200"},{"date":"05/06/2018","type":"expense","Amount":"800"}
 
-  database.ref("budget").on("child_added", function (snapshot) {
-    console.log(snapshot.val());
-    var income = [];
-    var expense = [];
-    data.push(snapshot.val());
-    // console.log(data)
-    // //console.log(data.date);
+]
+  // var tempdata = 0;
+  var exp=0;
+  var inc=0;
 
-    //console.log(data.length);
-    for (var i = 0; i < data.length; i++) {
-      console.log(i)
-      var check = moment(data[i].date, "MM/DD/YYYY");
-      var month = check.format("M");
-      // console.log(month);
+ database.ref("budget").once("value", function (snapshot) {
+     console.log(snapshot.val());
 
-      
-      if (month == 5) {
-        // console.log(month);
-        if (data[i].type == "expense") {
-          // console.log(tempdata)
-          // console.log(data[i].type)
-          //console.log(data[i].amount);
-          tempdata += Number(data[i].amount);
-          // var temporary = data[i].amount)
+     var records = snapshot.val();
+
+    // console.log(exp, inc);
+    Object.values(records).forEach(function(record) {
+      // console.log(record);
+      var date = record.date;
+      var type = record.type;
+      var amount = record.amount;
+      // console.log("date, type. amount: ", date, type, amount);
+
+      var check = moment(date, "MM/DD/YYYY");
+      var m = check.format("M");
+
+      if(m == 5){
+        //console.log(item.type)
+        if(type=="expense"){
+            exp+=parseInt(amount)
+            console.log(exp)
+        }else if(type="income"){
+            inc+=parseInt(amount)
+            console.log(inc)
         }
 
-      } 
-      console.log(tempdata);
+        console.log("exp, inc: ", exp, inc);
+
+
     }
+
+    })
+  //   var income = [];
+  //   var expense = [];
+    // data.push(snapshot.val());
+    // datasets();
   });
+
+  // function datasets() {
+//     data.forEach(function(item){
+//       //   console.log(item)
+//          var check = moment(item.date, "MM/DD/YYYY");
+//             var m = check.format("M");
+//          // console.log(m)
+//           if(m == 5){
+//               //console.log(item.type)
+//               if(item.type=="expense"){
+//                   exp+=parseInt(item.Amount)
+//               }else if(item.type="income"){
+//                   inc+=parseInt(item.Amount)
+//               }
+      
+//           }
+      
+//         })
+//         console.log("EXP "+exp)
+//         console.log("INC "+inc)
+//  // };
+
+  
+  //   // console.log(data)
+  //   // //console.log(data.date);
+
+  //   //console.log(data.length);
+  //   for (var i = 0; i < data.length; i++) {
+  //     console.log(i)
+      // var check = moment(data[i].date, "MM/DD/YYYY");
+      // var month = check.format("M");
+      // // console.log(month);
+
+      
+      // if (month == 5) {
+      //   // console.log(month);
+      //   if (data[i].type == "expense") {
+      //     // console.log(tempdata)
+      //     // console.log(data[i].type)
+      //     //console.log(data[i].amount);
+      //     tempdata += Number(data[i].amount);
+      //     // var temporary = data[i].amount)
+      //   }
+
+  //     } 
+  //     console.log(tempdata);
+  //   }
+  // });
 
 
 
@@ -327,19 +388,32 @@
   //   // //console.log(record[1])
   //   // //console.log(typeof record)
   //   var entry = record[1];
-  //   var randomDate = entry.date;
-  //   var randomFormat = "MM/DD/YYY";
-  //   var convertedDate = moment(randomDate, randomFormat);
+  //   var check = moment(data[i].date, "MM/DD/YYYY");
+  //   var month = check.format("M");
+  //   // console.log(month);
 
-  //   convertedDate.format("MMM Do, YYYY");
-  //   // step one: while iterating through object push respective types of income/expense into arrays
-  //   if (entry.type === "income") {
+    
+  //   if (month == 5) {
+  //     // console.log(month);
+  //     if (entry.type == "expense") {
+  //       // console.log(tempdata)
+  //       // console.log(data[i].type)
+  //       //console.log(data[i].amount);
+  //       tempdata += Number(data[i].amount);
+  //       console.log(tempdata);
+  //       // var temporary = data[i].amount)
+  //     }
+  //   }
+    // step one: while iterating through object push respective types of income/expense into arrays
+    // if (entry.type === "income") {
 
-  //     income.push(entry);
-  //   } else if (entry.type === "expense"){
+    //   income.push(entry);
+    // } else if (entry.type === "expense"){
 
-  //     expense.push(entry);
-  //   };
+    //   expense.push(entry);
+    // };
+
+    
 
 
   //   // step two: iterate through income and expense arrays in order to separate them into respective months and total them in correct index to match labels of graph
