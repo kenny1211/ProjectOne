@@ -205,6 +205,7 @@
     $("#amount").val("");
     $("#date").val("");
 
+
   });
 
   // Create Firebase event for adding expense to the database and a row in the html when a user adds an entry
@@ -248,11 +249,188 @@
 
   today = mm + '/' + dd + '/' + yyyy;
 
+  
+
+  // var tempdata = 0;
+  var exp1 = 0;
+  var exp2 = 0;
+  var exp3 = 0;
+  var exp4 = 0;
+  var exp5 = 0;
+  var exp6 = 0;
+  var exp7 = 0;
+  var exp8 = 0;
+  var exp9 = 0;
+  var exp10 = 0;
+  var exp11 = 0;
+  var exp12 = 0;
+  var inc1 = 0;
+  var inc2 = 0;
+  var inc3 = 0;
+  var inc4 = 0;
+  var inc5 = 0;
+  var inc6 = 0;
+  var inc7 = 0;
+  var inc8 = 0;
+  var inc9 = 0;
+  var inc10 = 0;
+  var inc11 = 0;
+  var inc12 = 0;
+  var income = [];
+  var expense = [];
+
+  database.ref("budget").once("value", function (snapshot) {
+    console.log(snapshot.val());
+
+    var records = snapshot.val();
+
+    // console.log(exp, inc);
+    Object.values(records).forEach(function (record) {
+      // console.log(record);
+      var date = record.date;
+      var type = record.type;
+      var amount = record.amount;
+      // console.log("date, type. amount: ", date, type, amount);
+
+      var check = moment(date, "MM/DD/YYYY");
+      var m = check.format("M");
+
+      if (m == 1) {
+        //console.log(item.type)
+        if (type == "expense") {
+          exp1 += parseInt(amount);
+        } else if (type = "income") {
+          inc1 += parseInt(amount)
+        }
+      }
+      else if (m == 2) {
+        //console.log(item.type)
+        if (type == "expense") {
+          exp2 += parseInt(amount)
+
+        } else if (type = "income") {
+          inc2 += parseInt(amount)
+
+        }
+      }
+      else if (m == 3) {
+        //console.log(item.type)
+        if (type == "expense") {
+          exp3 += parseInt(amount)
+
+        } else if (type = "income") {
+          inc3 += parseInt(amount)
+
+        }
+      }
+      else if (m == 4) {
+        //console.log(item.type)
+        if (type == "expense") {
+          exp4 += parseInt(amount)
+
+        } else if (type = "income") {
+          inc4 += parseInt(amount)
+
+        }
+      }
+      else if (m == 5) {
+        //console.log(item.type)
+        if (type == "expense") {
+          exp5 += parseInt(amount)
+
+        } else if (type = "income") {
+          inc5 += parseInt(amount)
+
+        }
+      }
+      else if (m == 6) {
+        //console.log(item.type)
+        if (type == "expense") {
+          exp6 += parseInt(amount)
+
+        } else if (type = "income") {
+          inc6 += parseInt(amount)
+
+        }
+      }
+      else if (m == 7) {
+        //console.log(item.type)
+        if (type == "expense") {
+          exp7 += parseInt(amount)
+
+        } else if (type = "income") {
+          inc7 += parseInt(amount)
+
+        }
+      }
+      else if (m == 8) {
+        //console.log(item.type)
+        if (type == "expense") {
+          exp8 += parseInt(amount)
+
+        } else if (type = "income") {
+          inc8 += parseInt(amount)
+
+        }
+      }
+      else if (m == 9) {
+        //console.log(item.type)
+        if (type == "expense") {
+          exp9 += parseInt(amount)
+
+        } else if (type = "income") {
+          inc9 += parseInt(amount)
+
+        }
+      }
+      else if (m == 10) {
+        //console.log(item.type)
+        if (type == "expense") {
+          exp10 += parseInt(amount)
+
+        } else if (type = "income") {
+          inc10 += parseInt(amount)
+
+        }
+      }
+      else if (m == 11) {
+        //console.log(item.type)
+        if (type == "expense") {
+          exp11 += parseInt(amount)
+
+        } else if (type = "income") {
+          inc11 += parseInt(amount)
+
+        }
+      }
+      else if (m == 12) {
+        //console.log(item.type)
+        if (type == "expense") {
+          exp12 += parseInt(amount)
+
+        } else if (type = "income") {
+          inc12 += parseInt(amount)
+
+        }
+      }
+    })
+
+    income.push(inc1, inc2, inc3, inc4, inc5, inc6, inc7, inc8, inc9, inc10, inc11, inc12);
+    expense.push(exp1, exp2, exp3, exp4, exp5, exp6, exp7, exp8, exp9, exp10, exp11, exp12);
+    console.log(inc1);
+    console.log(exp1);
+   
+    //   var income = [];
+    //   var expense = [];
+    // data.push(snapshot.val());
+    // datasets();
+  });
+  console.log(expense, income);
   // CHART ***************************************************
   var myChart = new Chart(document.getElementById("budgetByMonth"), {
     type: 'bar',
     data: {
-      labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "Decembner"],
+      labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
 
       datasets: [{
           label: "Total Income",
@@ -262,7 +440,7 @@
           pointStrokeColor: "#fff",
           pointHighlightFill: "#fff",
           pointHighlightStroke: "rgba(67, 214, 92,1)",
-          data: [150, 200, 300]
+          data: income
         },
         {
           label: "Total Expense",
@@ -272,44 +450,60 @@
           pointStrokeColor: "#fff",
           pointHighlightFill: "#fff",
           pointHighlightStroke: "rgba(218, 233, 39,1)",
-          data: [200, 300, 400]
+          data: expense
         }
       ]
     },
   });
-  var data = []
-  var tempdata = 0;
+ 
 
-  database.ref("budget").on("child_added", function (snapshot) {
-    console.log(snapshot.val());
-    var income = [];
-    var expense = [];
-    data.push(snapshot.val());
-    // console.log(data)
-    // //console.log(data.date);
+  // function datasets() {
+  //     data.forEach(function(item){
+  //       //   console.log(item)
+  //          var check = moment(item.date, "MM/DD/YYYY");
+  //             var m = check.format("M");
+  //          // console.log(m)
+  //           if(m == 5){
+  //               //console.log(item.type)
+  //               if(item.type=="expense"){
+  //                   exp+=parseInt(item.Amount)
+  //               }else if(item.type="income"){
+  //                   inc+=parseInt(item.Amount)
+  //               }
 
-    //console.log(data.length);
-    for (var i = 0; i < data.length; i++) {
-      console.log(i)
-      var check = moment(data[i].date, "MM/DD/YYYY");
-      var month = check.format("M");
-      // console.log(month);
+  //           }
 
-      
-      if (month == 5) {
-        // console.log(month);
-        if (data[i].type == "expense") {
-          // console.log(tempdata)
-          // console.log(data[i].type)
-          //console.log(data[i].amount);
-          tempdata += Number(data[i].amount);
-          // var temporary = data[i].amount)
-        }
+  //         })
+  //         console.log("EXP "+exp)
+  //         console.log("INC "+inc)
+  //  // };
 
-      } 
-      console.log(tempdata);
-    }
-  });
+
+  //   // console.log(data)
+  //   // //console.log(data.date);
+
+  //   //console.log(data.length);
+  //   for (var i = 0; i < data.length; i++) {
+  //     console.log(i)
+  // var check = moment(data[i].date, "MM/DD/YYYY");
+  // var month = check.format("M");
+  // // console.log(month);
+
+
+  // if (month == 5) {
+  //   // console.log(month);
+  //   if (data[i].type == "expense") {
+  //     // console.log(tempdata)
+  //     // console.log(data[i].type)
+  //     //console.log(data[i].amount);
+  //     tempdata += Number(data[i].amount);
+  //     // var temporary = data[i].amount)
+  //   }
+
+  //     } 
+  //     console.log(tempdata);
+  //   }
+  // });
 
 
 
@@ -327,19 +521,32 @@
   //   // //console.log(record[1])
   //   // //console.log(typeof record)
   //   var entry = record[1];
-  //   var randomDate = entry.date;
-  //   var randomFormat = "MM/DD/YYY";
-  //   var convertedDate = moment(randomDate, randomFormat);
+  //   var check = moment(data[i].date, "MM/DD/YYYY");
+  //   var month = check.format("M");
+  //   // console.log(month);
 
-  //   convertedDate.format("MMM Do, YYYY");
-  //   // step one: while iterating through object push respective types of income/expense into arrays
-  //   if (entry.type === "income") {
 
-  //     income.push(entry);
-  //   } else if (entry.type === "expense"){
+  //   if (month == 5) {
+  //     // console.log(month);
+  //     if (entry.type == "expense") {
+  //       // console.log(tempdata)
+  //       // console.log(data[i].type)
+  //       //console.log(data[i].amount);
+  //       tempdata += Number(data[i].amount);
+  //       console.log(tempdata);
+  //       // var temporary = data[i].amount)
+  //     }
+  //   }
+  // step one: while iterating through object push respective types of income/expense into arrays
+  // if (entry.type === "income") {
 
-  //     expense.push(entry);
-  //   };
+  //   income.push(entry);
+  // } else if (entry.type === "expense"){
+
+  //   expense.push(entry);
+  // };
+
+
 
 
   //   // step two: iterate through income and expense arrays in order to separate them into respective months and total them in correct index to match labels of graph
