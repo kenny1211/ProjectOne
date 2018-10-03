@@ -113,7 +113,7 @@
 
 
     });
-  });
+
   // click function
   $(document).on("click", ".table-button", function (event) {
     event.preventDefault();
@@ -129,21 +129,21 @@
     var type = "expense";
 
     var purchase = {
-      product: product,
-      price: price,
+      name: product,
+      amount: price,
       date: date,
       type: type
     };
 
-    database.ref("shoppingList").push(purchase);
+    database.ref("budget").push(purchase);
   });
 
   database.ref("shoppingList").on("child_added", function (childSnapshot) {
     //console.log(childSnapshot.val());
 
     // Store everything into a variable.
-    var product = childSnapshot.val().product;
-    var price = childSnapshot.val().price;
+    var product = childSnapshot.val().name;
+    var price = childSnapshot.val().amount;
     var date = childSnapshot.val().date;
 
     // Employee Info
@@ -153,13 +153,13 @@
 
     // Create the new row
     var newRow = $("<tr>").append(
-      $("<td>").text(product),
-      $("<td>").text(price),
+      $("<td>").text(name),
+      $("<td>").text(amount),
       $("<td>").text(date),
     );
 
     // Append the new row to the table
-    $("#walmart-table").append(newRow);
+    $("#data-table").append(newRow);
   });
 
 
@@ -197,9 +197,6 @@
     //console.log(newBudget.name);
     //console.log(newBudget.amount);
     //console.log(newBudget.date);
-
-    alert("Expense successfully added");
-
     // Clears all of the text-boxes
     $("#name").val("");
     $("#amount").val("");
@@ -616,3 +613,4 @@
   ); // initialise the request
   json.send(); //send request
   // END OF AJAX FOR STOCKS ///////////////////////////////////////////////
+});
