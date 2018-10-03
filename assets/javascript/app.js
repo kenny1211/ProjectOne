@@ -73,6 +73,7 @@
        
         // puts everything in product div
         $("#product-results").append(productDiv);
+        $("#product-results").css({"height": "400px"});
       
       }
     }
@@ -288,18 +289,86 @@ var data = snapshot.val();
 Object.entries(data).forEach(function(record){
   // console.log(record[1])
   // console.log(typeof record)
+  var entry = record[1];
+  var randomDate = entry.date;
+  var randomFormat = "MM/DD/YYY";
+  var convertedDate = moment(randomDate, randomFormat);
 
+  convertedDate.format("MMM Do, YYYY");
   // step one: while iterating through object push respective types of income/expense into arrays
-  if (record[1].type === "income") {
-    income.push(record[1]);
-  } else if (record[1].type === "expense"){
-    expense.push(record[1]);
+  if (entry.type === "income") {
+   
+    income.push(entry);
+  } else if (entry.type === "expense"){
+    
+    expense.push(entry);
   };
+
+
   // step two: iterate through income and expense arrays in order to separate them into respective months and total them in correct index to match labels of graph
-  
+
 });
 
 console.log(income);
 console.log(expense);
 });
 
+// AJAX REQUEST FOR STOCKS///////////////////////////////////
+var url = "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=SPX&interval=1min&apikey=TESSEDWF9MRZHWLA";
+
+$("#stockIndicator").show();
+doAjax(url);
+
+$('.ajaxtrigger').click(function() {
+  $("#stockIndicator").show();
+  doAjax(url);
+  return false;
+});
+
+function numberWithCommas(x) {
+  return x.toString().replace(/\B(?=(?:\d{3})+(?!\d))/g, ",");
+}
+
+function doAjax(url) {
+  $.ajax({
+    url: url,
+    dataType: 'json',
+    contentType: "application/json",
+    success: function(data) {
+      console.log(data)
+      
+      var symbol = data['Meta Data']['2. Symbol']
+      var lastRefreshed = data['Meta Data']['3. Last Refreshed']
+      var lastTradePriceOnly = data['Time Series (1min)'][lastRefreshed]['4. close']
+      
+      $('#stockSymbol').html(symbol + " is currently worth $" + lastTradePriceOnly + " USD<br>");
+      $("#stockIndicator").hide();
+      
+    }
+  });
+}
+
+
+doAjax()
+
+var json = new XMLHttpRequest(); // start a new variable to store the JSON in
+json.onreadystatechange = function() {
+  if (this.readyState == 4 && this.status == 200) { // if HTTP header 200 - ok
+    var object = JSON.parse(this.responseText); // set the variable 'object' to whatever we get back, in our case it is an array of 10 different arrays
+
+    object.forEach(function(currency) { // for each of those arrays, split it into chunks called 'currency'
+      $("#coincap").html(currency.name +
+        " is currently worth $" +
+        currency.price_usd +
+        " USD<br>")
+       // get the array keys from the API
+    });
+  }
+};
+json.open(
+  "GET", // method
+  "https://api.coinmarketcap.com/v1/ticker/?convert=USD&limit=1", // url
+  true // async
+); // initialise the request
+json.send(); //send request
+// END OF AJAX FOR STOCKS ///////////////////////////////////////////////
