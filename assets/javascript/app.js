@@ -151,16 +151,12 @@
     //console.log(date);
 
     // Create the new row
-    var newRow = $("<tr>").append(
-      $("<td>").text(name),
-      $("<td>").text(amount),
-      $("<td>").text(date),
-    );
+ 
 
     
 
     // Append the new row to the table
-    $("#data-table").append(newRow);
+    
   });
 
 
