@@ -73,9 +73,7 @@
 
         // puts everything in product div
         $("#product-results").append(productDiv);
-        $("#product-results").css({
-          "height": "400px"
-        });
+  
 
 
       }
@@ -119,9 +117,9 @@
   $(document).on("click", ".table-button", function (event) {
     event.preventDefault();
     $("#product-results").empty();
-    $("#product-results").css({
-      "height": "0px"
-    });
+    //$("#product-results").css({
+    //  "height": ""
+    //});
     $("#search-form").show();
 
     var product = $(this).attr("data-name");

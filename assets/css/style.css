@@ -37,10 +37,6 @@ form {
 
 }
 
-#product-results {
-  overflow: auto; 
-
-}
 
 #coincap {
   text-align: center;
@@ -80,10 +76,6 @@ img {
   height: 600px;
 }
 
-#product-results {
-  overflow: auto; 
-
-}
 
 #panel {
   overflow: auto; 
