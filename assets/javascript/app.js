@@ -23,6 +23,9 @@
       for (var i = 0; i < productsArray.items.length; i++) {
         // everything we print will fit in here
         var productDiv = $("<div>").addClass("card mb-5")
+        productDiv
+          .addClass("product")
+
         // print product name
         var productName = $("<div>");
         productName
@@ -83,6 +86,15 @@
       $("#search-form").hide();
       event.preventDefault();
 
+      $("#panel").css("height", "700px")
+      $("#panel").css("margin-bottom", "20px")
+      $(".product").css("margin-bottom", "20px")
+      $("#panel").css("overflow", "auto")
+
+  
+     
+
+
       var searchTerm = $("#search-term").val();
 
       if (!searchTerm) {
@@ -117,9 +129,7 @@
   $(document).on("click", ".table-button", function (event) {
     event.preventDefault();
     $("#product-results").empty();
-    //$("#product-results").css({
-    //  "height": ""
-    //});
+    $("#chart").css("margin-top", "-300px")
     $("#search-form").show();
 
     var product = $(this).attr("data-name");
