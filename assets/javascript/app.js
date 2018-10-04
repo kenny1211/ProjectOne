@@ -26,7 +26,7 @@
         // print product name
         var productName = $("<div>");
         productName
-          .addClass("card-header bg-success text-light")
+          .addClass("card-header bg-dark text-light")
           .text(productsArray.items[i].name) //product name 
           .appendTo(productDiv);
         // product info will have it's on div below name
@@ -37,7 +37,7 @@
         var productPrice = $("<p>");
         productPrice
           .addClass("card-text")
-          .html(productsArray.items[i].salePrice) //product price
+          .html("$" + productsArray.items[i].salePrice) //product price
           .appendTo(productBody)
         // print product image
         var image = $("<img>")

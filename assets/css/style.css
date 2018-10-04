@@ -81,3 +81,8 @@ img {
   overflow: auto; 
   height: 380px;
 }
+
+.card-text {
+  font-size: 20px;
+  font-weight: bold;
+}
