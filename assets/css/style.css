@@ -19,13 +19,13 @@ form {
 
 #stockIndicator {
   text-align: center;
-  font-size: 32px;
+  font-size: 28px;
 
 }
 
 #stockSymbol {
   text-align: center;
-  font-size: 32px;
+  font-size: 28px;
 
 
 }
@@ -52,6 +52,7 @@ form {
   animation-duration: 2s;
   animation-fill-mode: forwards;
   margin-bottom: 20px;
+  font-size: 28px;
 
 }
 
