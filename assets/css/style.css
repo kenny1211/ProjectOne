@@ -32,7 +32,7 @@ form {
 
 #stockAsk {
   text-align: center;
-  font-size: 32px;
+  font-size: 28px;
 
 
 }
@@ -40,18 +40,18 @@ form {
 
 #coincap {
   text-align: center;
-  font-size: 32px;
+  font-size: 28px;
   animation-name: coincap;
   animation-duration: 2s;
   animation-fill-mode: forwards;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 .stockData {
   animation-name: stockData;
   animation-duration: 2s;
   animation-fill-mode: forwards;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 
 }
 
@@ -83,10 +83,17 @@ margin-bottom: 5px;
   overflow: auto;
 }
 
-#panel {
+#chart-div {
+  height: auto;
  
   
 
+}
+
+#description {
+  font-size: 18px;
+  text-align: center;
+  padding: 20px;
 }
 
 .card-text {

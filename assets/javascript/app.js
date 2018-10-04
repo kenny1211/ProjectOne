@@ -604,8 +604,7 @@
       object.forEach(function (currency) { // for each of those arrays, split it into chunks called 'currency'
         $("#coincap").html(currency.name +
           " is currently worth $" +
-          currency.price_usd +
-          " USD<br>")
+          currency.price_usd)
         // get the array keys from the API
       });
     }
