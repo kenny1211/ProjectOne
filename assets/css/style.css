@@ -88,3 +88,13 @@ form {
   font-size: 20px;
   font-weight: bold;
 }
+
+#menu1 {
+  overflow: auto;
+
+}
+
+#menu2 {
+  overflow: auto;
+  
+}
