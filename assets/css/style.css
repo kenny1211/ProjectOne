@@ -1,6 +1,7 @@
 h1 {
   text-align: center;
   color: white;
+  font-family: 'Righteous', cursive;
 }
 
 .form-card {
@@ -13,5 +14,77 @@ form {
 }
 
 .card-title {
+  font-weight: bold;
+}
+
+#stockIndicator {
+  text-align: center;
+  font-size: 32px;
+
+}
+
+#stockSymbol {
+  text-align: center;
+  font-size: 32px;
+
+
+}
+
+#stockAsk {
+  text-align: center;
+  font-size: 32px;
+
+
+}
+
+
+#coincap {
+  text-align: center;
+  font-size: 32px;
+  animation-name: coincap;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+  margin-bottom: 10px;
+}
+
+.stockData {
+  animation-name: stockData;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+  margin-bottom: 10px;
+
+}
+
+.preview-image {
+  width: 80%;
+  padding: 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@keyframes stockData {
+  from {left: 500px;}
+  to {left: 0px;}
+}
+
+
+@keyframes coincap {
+  from {right: 500px;}
+  to {right: 0px;}
+}
+
+#chart {
+  height: 600px;
+}
+
+
+#panel {
+  overflow: auto; 
+  height: 380px;
+}
+
+.card-text {
+  font-size: 20px;
   font-weight: bold;
 }
