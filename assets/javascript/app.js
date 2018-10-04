@@ -76,7 +76,7 @@
         $("#product-results").css({
           "height": "400px"
         });
-        
+
 
       }
     }
@@ -583,7 +583,7 @@
         var lastRefreshed = data['Meta Data']['3. Last Refreshed']
         var lastTradePriceOnly = data['Time Series (1min)'][lastRefreshed]['4. close']
 
-        $('#stockSymbol').html(symbol + " is currently worth $" + lastTradePriceOnly + " USD<br>");
+        $('#stockSymbol').html("The S&P 500 is currently at " + lastTradePriceOnly);
         $("#stockIndicator").hide();
 
       }
